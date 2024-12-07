@@ -53,4 +53,5 @@ public class AddressTO implements Serializable
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+
 }

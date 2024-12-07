@@ -58,4 +58,5 @@ public class PatientVisitTO implements Serializable {
     public void setMedicalTreatments(Collection<MedicalTreatmentTO> medicalTreatments) {
         this.medicalTreatments = medicalTreatments;
     }
+
 }
