@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements PatientDao
 {
-
+    public void customSavePatient() {
+        //entityManager.persist();
+    }
 }
