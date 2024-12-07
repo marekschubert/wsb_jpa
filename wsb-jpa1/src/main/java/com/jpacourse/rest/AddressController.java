@@ -1,6 +1,6 @@
 package com.jpacourse.rest;
 
-import com.jpacourse.dto.AddressTO;
+import com.jpacourse.dto.address.AddressTO;
 import com.jpacourse.rest.exception.EntityNotFoundException;
 import com.jpacourse.service.AddressService;
 import org.springframework.web.bind.annotation.GetMapping;

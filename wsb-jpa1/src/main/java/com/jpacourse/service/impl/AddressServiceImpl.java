@@ -1,6 +1,6 @@
 package com.jpacourse.service.impl;
 
-import com.jpacourse.dto.AddressTO;
+import com.jpacourse.dto.address.AddressTO;
 import com.jpacourse.mapper.AddressMapper;
 import com.jpacourse.persistence.dao.AddressDao;
 import com.jpacourse.persistence.entity.AddressEntity;

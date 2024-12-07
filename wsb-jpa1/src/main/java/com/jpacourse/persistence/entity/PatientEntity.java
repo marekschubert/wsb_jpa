@@ -36,6 +36,8 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
+	private Integer height;
+
 	@OneToOne(cascade = CascadeType.ALL, optional = false)
 	@JoinColumn(name = "address_id", unique = true, nullable = false)
 	// Relacja jednostronna od strony rodzica z AddressEntity
@@ -100,6 +102,10 @@ public class PatientEntity {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
+	public Integer getHeight() { return height;	}
+
+	public void setHeight(Integer height) { this.height = height; }
 
 	public AddressEntity getAddress() {
 		return address;

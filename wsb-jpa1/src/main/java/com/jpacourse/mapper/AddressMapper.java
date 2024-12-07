@@ -1,6 +1,6 @@
 package com.jpacourse.mapper;
 
-import com.jpacourse.dto.AddressTO;
+import com.jpacourse.dto.address.AddressTO;
 import com.jpacourse.persistence.entity.AddressEntity;
 
 public final class AddressMapper
