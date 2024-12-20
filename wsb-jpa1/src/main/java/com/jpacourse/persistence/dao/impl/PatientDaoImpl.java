@@ -10,4 +10,6 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
     public void customSavePatient() {
         //entityManager.persist();
     }
+
+
 }
