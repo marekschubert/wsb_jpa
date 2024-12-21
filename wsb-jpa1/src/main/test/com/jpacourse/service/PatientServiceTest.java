@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -33,8 +32,6 @@ public class PatientServiceTest {
 
     @Autowired
     private DoctorDao doctorDao;
-
-
 
     @Transactional
     @Test

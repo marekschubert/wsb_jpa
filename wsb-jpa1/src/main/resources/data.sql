@@ -1,5 +1,5 @@
 INSERT INTO ADDRESS (city, address_line1, address_line2, postal_code)
-VALUES ('Warszawa', 'Aleje Jerozolimskie 1', NULL, '00-001');
+VALUES ('Warszawa', 'Aleje Jerozolimskie 1', NULL, '62-030');
 
 INSERT INTO ADDRESS (city, address_line1, address_line2, postal_code)
 VALUES ('Kraków', 'Rynek Główny 12', 'Mieszkanie 5', '31-001');

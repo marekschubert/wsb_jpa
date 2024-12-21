@@ -1,11 +1,10 @@
 package com.jpacourse.rest;
 
+import com.jpacourse.dto.patient.AddPatientVisitTO;
 import com.jpacourse.dto.patient.PatientTO;
 import com.jpacourse.rest.exception.EntityNotFoundException;
 import com.jpacourse.service.PatientService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PatientController {
@@ -24,6 +23,11 @@ public class PatientController {
             return patient;
         }
         throw new EntityNotFoundException(id);
+    }
+
+    @PostMapping("/patient")
+    void addPatientVisit(@RequestBody final AddPatientVisitTO addPatientVisitTO) {
+        patientService.addVisit(addPatientVisitTO);
     }
 
 }
