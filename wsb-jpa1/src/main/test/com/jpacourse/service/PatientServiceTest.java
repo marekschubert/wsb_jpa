@@ -3,9 +3,12 @@ package com.jpacourse.service;
 import com.jpacourse.dto.address.AddressTO;
 import com.jpacourse.dto.medicalTreatment.MedicalTreatmentTO;
 import com.jpacourse.dto.patient.PatientTO;
+import com.jpacourse.dto.patient.UpdatePatientTO;
 import com.jpacourse.dto.visit.PatientVisitTO;
 import com.jpacourse.persistence.dao.DoctorDao;
+import com.jpacourse.persistence.dao.PatientDao;
 import com.jpacourse.persistence.dao.VisitDao;
+import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.enums.TreatmentType;
 import com.jpacourse.service.impl.PatientServiceImpl;
 import org.junit.Test;
@@ -15,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -27,6 +31,8 @@ public class PatientServiceTest {
     @Autowired
     private PatientServiceImpl patientService;
 
+    @Autowired
+    private PatientDao patientDao;
     @Autowired
     private VisitDao visitDao;
 
@@ -85,6 +91,49 @@ public class PatientServiceTest {
         assertThat(firstTreatment.getId()).isEqualTo(1L);
         assertThat(firstTreatment.getDescription()).isEqualTo("ECHO serca");
         assertThat(firstTreatment.getType()).isEqualTo(TreatmentType.EKG);
+    }
+
+    @Transactional
+    @Test
+    public void testShouldUpdatePatient() {
+        // given
+        Long patientId = 1L;
+        PatientEntity existingPatient = patientDao.findOne(patientId);
+        assertThat(existingPatient).isNotNull();
+
+        UpdatePatientTO updatePatientTO = new UpdatePatientTO();
+        updatePatientTO.setId(patientId);
+        updatePatientTO.setFirstName("UpdatedFirstName");
+        //LastName not update - should remain the same
+
+        updatePatientTO.setTelephoneNumber("123456789");
+        updatePatientTO.setEmail("updatedemail@example.com");
+        updatePatientTO.setPatientNumber("PN12345");
+        updatePatientTO.setDateOfBirth(LocalDate.of(1990, 1, 1));
+        updatePatientTO.setHeight(180);
+
+        AddressTO addressTO = new AddressTO();
+        addressTO.setAddressLine1("Updated Address Line 1");
+        addressTO.setCity("Updated City");
+        updatePatientTO.setAddress(addressTO);
+
+        // when
+        patientService.update(updatePatientTO);
+
+        // then
+        PatientEntity updatedPatient = patientDao.findOne(patientId);
+        assertThat(updatedPatient).isNotNull();
+        assertThat(updatedPatient.getFirstName()).isEqualTo("UpdatedFirstName");
+        assertThat(updatedPatient.getTelephoneNumber()).isEqualTo("123456789");
+        assertThat(updatedPatient.getEmail()).isEqualTo("updatedemail@example.com");
+        assertThat(updatedPatient.getPatientNumber()).isEqualTo("PN12345");
+        assertThat(updatedPatient.getDateOfBirth()).isEqualTo(LocalDate.of(1990, 1, 1));
+        assertThat(updatedPatient.getHeight()).isEqualTo(180);
+        assertThat(updatedPatient.getAddress()).isNotNull();
+        assertThat(updatedPatient.getAddress().getAddressLine1()).isEqualTo("Updated Address Line 1");
+        assertThat(updatedPatient.getAddress().getCity()).isEqualTo("Updated City");
+
+        assertThat(updatedPatient.getLastName()).isEqualTo(existingPatient.getLastName());
     }
 
 

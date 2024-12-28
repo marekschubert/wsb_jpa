@@ -2,6 +2,7 @@ package com.jpacourse.rest;
 
 import com.jpacourse.dto.patient.AddPatientVisitTO;
 import com.jpacourse.dto.patient.PatientTO;
+import com.jpacourse.dto.patient.UpdatePatientTO;
 import com.jpacourse.rest.exception.EntityNotFoundException;
 import com.jpacourse.service.PatientService;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,16 @@ public class PatientController {
     @PostMapping("/patient")
     void addPatientVisit(@RequestBody final AddPatientVisitTO addPatientVisitTO) {
         patientService.addVisit(addPatientVisitTO);
+    }
+
+    @DeleteMapping("/patient/{id}")
+    void deletePatient(@PathVariable final Long id){
+        patientService.deleteById(id);
+    }
+
+    @PutMapping("/patient")
+    void updatePatient(@RequestBody final UpdatePatientTO updatePatientTO){
+        patientService.update(updatePatientTO);
     }
 
 }
