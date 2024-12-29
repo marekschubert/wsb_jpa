@@ -7,6 +7,9 @@ VALUES ('Kraków', 'Rynek Główny 12', 'Mieszkanie 5', '31-001');
 INSERT INTO ADDRESS (city, address_line1, address_line2, postal_code)
 VALUES ('Wrocław', 'Plac Grunwaldzki 20', NULL, '50-001');
 
+INSERT INTO ADDRESS (city, address_line1, address_line2, postal_code)
+VALUES ('Wrocław', 'Fabryczna 1', NULL, '50-001');
+
 
 INSERT INTO DOCTOR (first_name, last_name, telephone_number, email, doctor_number, specialization, address_id)
 VALUES ('Jan', 'Kowalski', '123456789', 'jan.kowalski@hospital.pl', 'DOC001', 'SURGEON', 1);
@@ -24,6 +27,9 @@ VALUES ('Katarzyna', 'Wiśniewska', '444555666', 'katarzyna.wisniewska@gmail.com
 INSERT INTO PATIENT (first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, height)
 VALUES ('Jan', 'Kowalski', '888999777', 'jan.kow@gmail.com', 'PAT003', '1999-04-20', 1, 191);
 
+INSERT INTO PATIENT (first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, height)
+VALUES ('Adam', 'Kowalski', '333222111', 'adam.kowalski@gmail.com', 'PAT004', '1995-11-15', 4, 165);
+
 
 INSERT INTO VISIT (description, time, doctor_id, patient_id)
 VALUES ('Kontrola pooperacyjna', '2024-11-26 10:00:00', 1, 1);
@@ -36,6 +42,12 @@ VALUES ('Kontrola standardowa', '2024-11-28 10:00:00', 1, 1);
 
 INSERT INTO VISIT (description, time, doctor_id, patient_id)
 VALUES ('Konsultacja dermatologiczna', '2024-11-29 12:00:00', 2, 2);
+
+INSERT INTO VISIT (description, time, doctor_id, patient_id)
+VALUES ('Badanie okresowe', '2024-11-30 14:00:00', 1, 2);
+
+INSERT INTO VISIT (description, time, doctor_id, patient_id)
+VALUES ('Badanie kontrolne', '2024-12-02 11:00:00', 1, 3);
 
 
 INSERT INTO MEDICAL_TREATMENT (description, type, visit_id)

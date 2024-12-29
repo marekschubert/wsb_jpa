@@ -77,6 +77,12 @@ public abstract class AbstractDao<T, K extends Serializable> implements Dao<T, K
 		return findOne(id) != null;
 	}
 
+	@Override
+	public T merge(T entity) {
+		entityManager.merge(entity);
+		return entity;
+	}
+
 	@SuppressWarnings("unchecked")
 	protected Class<T> getDomainClass() {
 		if (domainClass == null) {

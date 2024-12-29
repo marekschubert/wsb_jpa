@@ -29,7 +29,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PatientServiceTest {
 
     @Autowired
-    private PatientServiceImpl patientService;
+    private PatientService patientService;
 
     @Autowired
     private PatientDao patientDao;

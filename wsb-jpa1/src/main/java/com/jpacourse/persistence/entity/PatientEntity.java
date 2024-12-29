@@ -13,11 +13,29 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "PATIENT")
+@NamedQueries({
+		@NamedQuery(
+				name = "PatientEntity.findByLastName",
+				query = "SELECT p FROM PatientEntity p WHERE p.lastName = :lastName"
+		),
+		@NamedQuery(
+				name = "PatientEntity.findWithVisitsCountGreaterThan",
+				query = "SELECT p FROM PatientEntity p WHERE size(p.visits) > :visitsCount"
+		),
+		@NamedQuery(
+				name = "PatientEntity.findWithHeightLessThan",
+				query = "SELECT p FROM PatientEntity p WHERE p.height < :height"
+		)
+})
 public class PatientEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Version
+	@Column(columnDefinition = "bigint DEFAULT 0", nullable = false)
+	private int version;
 
 	@Column(nullable = false)
 	private String firstName;

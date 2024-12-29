@@ -3,6 +3,7 @@ package com.jpacourse.mapper;
 import com.jpacourse.dto.address.AddressTO;
 import com.jpacourse.dto.patient.PatientTO;
 import com.jpacourse.dto.patient.UpdatePatientTO;
+import com.jpacourse.dto.patient.VisitPatientTO;
 import com.jpacourse.dto.visit.PatientVisitTO;
 import com.jpacourse.persistence.entity.AddressEntity;
 import com.jpacourse.persistence.entity.PatientEntity;
@@ -84,4 +85,25 @@ public class PatientMapper {
         return patientEntity;
     }
 
+    public static VisitPatientTO mapToVisitPatientTO(final PatientEntity patientEntity) {
+        if (patientEntity == null) {
+            return null;
+        }
+
+        VisitPatientTO visitPatientTO = new VisitPatientTO();
+
+        visitPatientTO.setId(patientEntity.getId());
+        visitPatientTO.setFirstName(patientEntity.getFirstName());
+        visitPatientTO.setLastName(patientEntity.getLastName());
+        visitPatientTO.setTelephoneNumber(patientEntity.getTelephoneNumber());
+        visitPatientTO.setEmail(patientEntity.getEmail());
+        visitPatientTO.setPatientNumber(patientEntity.getPatientNumber());
+        visitPatientTO.setHeight(patientEntity.getHeight());
+        visitPatientTO.setDateOfBirth(patientEntity.getDateOfBirth());
+
+        AddressTO addressTO = AddressMapper.mapToTO(patientEntity.getAddress());
+        visitPatientTO.setAddress(addressTO);
+
+        return visitPatientTO;
+    }
 }
