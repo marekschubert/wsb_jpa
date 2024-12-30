@@ -24,6 +24,4 @@ public interface Dao<T, K extends Serializable> {
     long count();
 
     boolean exists(K id);
-
-    T merge(T entity);
 }

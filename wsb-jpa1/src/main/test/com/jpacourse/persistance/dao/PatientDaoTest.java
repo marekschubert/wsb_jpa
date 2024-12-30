@@ -280,14 +280,14 @@ public class PatientDaoTest {
 
             // then
             assertThrows(ObjectOptimisticLockingFailureException.class, () -> {
-                patientDao.merge(patient1);
+                patientDao.update(patient1);
             });
         });
 
         Thread t2 = new Thread(() -> {
             PatientEntity patient2 = patientDao.findOne(patientId);
             patient2.setTelephoneNumber("999999999");
-            patientDao.merge(patient2);
+            patientDao.update(patient2);
         });
 
         // when
